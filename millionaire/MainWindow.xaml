@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:millionaire"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Kdo chce být milionářem" Height="700" Width="1300" MinHeight="700" MinWidth="1300">
+    <!--
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="30"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">-->
     <Grid>
-        
+        <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>

@@ -1,0 +1,395 @@
+﻿<Page x:Class="millionaire.pages.Game"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:millionaire"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1300"
+      Title="Game">
+
+    <Page.Resources>
+        <Style x:Key="orangePath" TargetType="Path">
+            <Setter Property="Fill" Value="#ffffff"></Setter>
+            <Setter Property="Fill" Value="#ffffff"></Setter>
+        </Style>
+        <Style x:Key="bluePath" TargetType="Path">
+            <Setter Property="Fill" Value="#FF0E007F"></Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Fill" Value="#ff7e28"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="answerButton" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate  TargetType="{x:Type Button}">
+                        <ContentPresenter>
+                            <ContentPresenter.Resources></ContentPresenter.Resources>
+                        </ContentPresenter>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+
+            <Button Content="menu" Height="40" Width="40" VerticalAlignment="top" HorizontalAlignment="left" Click="BackToMenu"></Button>
+
+            <Rectangle Fill="#FFCCCCCC" HorizontalAlignment="Left" Height="2" VerticalAlignment="Center" Stretch="UniformToFill" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <Rectangle Fill="#FFCCCCCC" HorizontalAlignment="Left" Height="2" VerticalAlignment="Center" Stretch="UniformToFill" Grid.Row="2" Grid.ColumnSpan="2"/>
+
+            <Button Click="Answer_button_click" x:Name="WPF_button1" Cursor="Hand" Grid.Column="0" Grid.Row="1" Background="Transparent" BorderThickness="0" Height="72" Width="423">
+                <Grid>
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="#FF0E007F" StrokeThickness="3" Stroke="#FFCCCCCC" StrokeMiterLimit="10" Width="420" Height="70" Stretch="Fill" Canvas.Top="125.54" Canvas.Left="-206">
+                        <Path.Data>
+                            <PathGeometry Figures="M10 50 42 15a14.91 14.91 0 0 1 11-5H347a14.91 14.91 0 0 1 11 5l32 35L358 85a14.91 14.91 0 0 1-11 5H53a14.91 14.91 0 0 1-11-5Z" FillRule="NonZero"/>
+                        </Path.Data>
+                    </Path>
+                    <TextBlock Text="A:" VerticalAlignment="Center" HorizontalAlignment="left" Margin="35,10,0,15" FontSize="30" Foreground="#ff6600"></TextBlock>
+                    <TextBlock x:Name="WPF_answer1" Text="Answer 1" VerticalAlignment="Center" HorizontalAlignment="left" Margin="75,10,0,15" FontSize="30" Foreground="white"></TextBlock>
+                </Grid>
+            </Button>
+            <Button Click="Answer_button_click" x:Name="WPF_button2" Cursor="Hand" Grid.Column="1" Grid.Row="1" Background="Transparent" BorderThickness="0" Height="72" Width="423">
+                <Grid>
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="#FF0E007F" StrokeThickness="3" Stroke="#FFCCCCCC" StrokeMiterLimit="10" Width="420" Height="70" Stretch="Fill" Canvas.Top="125.54" Canvas.Left="-206">
+                        <Path.Data>
+                            <PathGeometry Figures="M10 50 42 15a14.91 14.91 0 0 1 11-5H347a14.91 14.91 0 0 1 11 5l32 35L358 85a14.91 14.91 0 0 1-11 5H53a14.91 14.91 0 0 1-11-5Z" FillRule="NonZero"/>
+                        </Path.Data>
+                    </Path>
+                    <TextBlock Text="B:" VerticalAlignment="Center" HorizontalAlignment="left" Margin="35,10,0,15" FontSize="30" Foreground="#ff6600"></TextBlock>
+                    <TextBlock x:Name="WPF_answer2" Text="Answer 2" VerticalAlignment="Center" HorizontalAlignment="left" Margin="75,10,0,15" FontSize="30" Foreground="white"></TextBlock>
+                </Grid>
+            </Button>
+            <Button Click="Answer_button_click" x:Name="WPF_button3" Cursor="Hand" Grid.Column="0" Grid.Row="2" Background="Transparent" BorderThickness="0" Height="72" Width="423">
+                <Grid>
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="#FF0E007F" StrokeThickness="3" Stroke="#FFCCCCCC" StrokeMiterLimit="10" Width="420" Height="70" Stretch="Fill" Canvas.Top="125.54" Canvas.Left="-206">
+                        <Path.Data>
+                            <PathGeometry Figures="M10 50 42 15a14.91 14.91 0 0 1 11-5H347a14.91 14.91 0 0 1 11 5l32 35L358 85a14.91 14.91 0 0 1-11 5H53a14.91 14.91 0 0 1-11-5Z" FillRule="NonZero"/>
+                        </Path.Data>
+                    </Path>
+                    <TextBlock Text="C:" VerticalAlignment="Center" HorizontalAlignment="left" Margin="35,10,0,15" FontSize="30" Foreground="#ff6600"></TextBlock>
+                    <TextBlock x:Name="WPF_answer3" Text="Answer 3" VerticalAlignment="Center" HorizontalAlignment="left" Margin="75,10,0,15" FontSize="30" Foreground="white"></TextBlock>
+                </Grid>
+            </Button>
+            <Button Click="Answer_button_click" x:Name="WPF_button4" Cursor="Hand" Grid.Column="1" Grid.Row="2" Background="Transparent" BorderThickness="0" Height="72" Width="423">
+                <Grid>
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="#FF0E007F" StrokeThickness="3" Stroke="#FFCCCCCC" StrokeMiterLimit="10" Width="420" Height="70" Stretch="Fill" Canvas.Top="125.54" Canvas.Left="-206">
+                        <Path.Data>
+                            <PathGeometry Figures="M10 50 42 15a14.91 14.91 0 0 1 11-5H347a14.91 14.91 0 0 1 11 5l32 35L358 85a14.91 14.91 0 0 1-11 5H53a14.91 14.91 0 0 1-11-5Z" FillRule="NonZero"/>
+                        </Path.Data>
+                    </Path>
+                    <TextBlock Text="D:" VerticalAlignment="Center" HorizontalAlignment="left" Margin="35,10,0,15" FontSize="30" Foreground="#ff6600"></TextBlock>
+                    <TextBlock x:Name="WPF_answer4" Text="Answer 4" VerticalAlignment="Center" HorizontalAlignment="left" Margin="75,10,0,15" FontSize="30" Foreground="white"></TextBlock>
+                </Grid>
+            </Button>
+
+            <Path Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="#FF0E007F" StrokeThickness="3" Stroke="#FFCCCCCC" StrokeMiterLimit="10" Width="900" Height="300" Stretch="Fill" Canvas.Top="125.54" Canvas.Left="-206">
+                <Path.Data>
+                    <PathGeometry Figures="M10 50 42 15a14.91 14.91 0 0 1 11-5H347a14.91 14.91 0 0 1 11 5l32 35L358 85a14.91 14.91 0 0 1-11 5H53a14.91 14.91 0 0 1-11-5Z" FillRule="NonZero"/>
+                </Path.Data>
+            </Path>
+            <TextBlock x:Name="WPF_question" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0" Text="some question" TextAlignment="center" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="700" TextWrapping="Wrap" Foreground="White"/>
+
+
+
+
+
+
+        </Grid>
+
+
+
+        <!--<local:PathButton Data="M10 50 42 15a14.91 14.91 0 0 1 11-5H347a14.91 14.91 0 0 1 11 5l32 35L358 85a14.91 14.91 0 0 1-11 5H53a14.91 14.91 0 0 1-11-5Z" Margin="78,294,531,288"></local:PathButton>-->
+
+
+        <Grid Grid.Column="1" Background="#333">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Cursor="Hand" Width="52" Height="52" BorderThickness="0" Background="Transparent">
+                    <Ellipse Width="50" Height="50" Fill="black"></Ellipse>
+                </Button>
+                <Button Cursor="Hand" Width="52" Height="52" BorderThickness="0" Background="Transparent" Margin="20,0,20,0">
+                    <Ellipse Width="50" Height="50" Fill="black"></Ellipse>
+                </Button>
+                <Button Cursor="Hand" Width="52" Height="52" BorderThickness="0" Background="Transparent">
+                    <Ellipse Width="50" Height="50" Fill="black"></Ellipse>
+                </Button>
+            </StackPanel>
+
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Path x:Name="WPF_actualIndicator" Grid.Row="14" VerticalAlignment="Center" HorizontalAlignment="Center" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Height="37" Width="280" Fill="#FF0E007F" StrokeThickness="3" Stroke="#FFCCCCCC" StrokeMiterLimit="10" Stretch="Fill">
+                    <Path.Data>
+                        <PathGeometry Figures="M 26.557356 41.497111 34 6.5 c 2.798295 -3.1422351 6.792588 -4.9578226 11 -5 h 294 c 4.20741 0.042177 8.2017 1.8577649 11 5 L 356.73253 41.497111 350 76.5 c -2.7983 3.142235 -6.79259 4.957823 -11 5 H 45 c -4.207412 -0.04218 -8.201705 -1.857765 -11 -5 z" FillRule="NonZero"/>
+                    </Path.Data>
+                </Path>
+
+
+                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="center">
+                    <TextBlock Width="30" FontWeight="SemiBold" FontSize="25" Text="15" TextAlignment="Center" Foreground="#fff"></TextBlock>
+                    <Grid Width="40">
+                        <Rectangle Visibility="hidden" x:Name="WPF_shape15" Fill="#fff" HorizontalAlignment="Center" VerticalAlignment="Center" Height="7" Width="7" RenderTransformOrigin="0.5,0.5">
+                            <Rectangle.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="45"/>
+                                </TransformGroup>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                    </Grid>
+                    <TextBlock x:Name="prize14" Width="160" FontSize="25" FontWeight="SemiBold" Text="10 000 000 Kč"  TextAlignment="Right" Foreground="#fff"></TextBlock>
+                </StackPanel>
+
+                <StackPanel x:Name="prize13" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="center">
+                    <TextBlock Width="30" FontWeight="SemiBold" FontSize="25" Text="14" TextAlignment="Center" Foreground="#ff6600"></TextBlock>
+                    <Grid Width="40">
+                        <Rectangle Visibility="hidden" x:Name="WPF_shape14" Fill="#fff" HorizontalAlignment="Center" VerticalAlignment="Center" Height="7" Width="7" RenderTransformOrigin="0.5,0.5">
+                            <Rectangle.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="45"/>
+                                </TransformGroup>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                    </Grid>
+                    <TextBlock Width="160" FontSize="25" FontWeight="SemiBold" Text="5 000 000 Kč"  TextAlignment="Right" Foreground="#ff6600"></TextBlock>
+                </StackPanel>
+
+                <StackPanel x:Name="prize12" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="center">
+                    <TextBlock Width="30" FontWeight="SemiBold" FontSize="25" Text="13" TextAlignment="Center" Foreground="#ff6600"></TextBlock>
+                    <Grid Width="40">
+                        <Rectangle Visibility="hidden" x:Name="WPF_shape13" Fill="#fff" HorizontalAlignment="Center" VerticalAlignment="Center" Height="7" Width="7" RenderTransformOrigin="0.5,0.5">
+                            <Rectangle.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="45"/>
+                                </TransformGroup>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                    </Grid>
+                    <TextBlock Width="160" FontSize="25" FontWeight="SemiBold" Text="2 500 000 Kč"  TextAlignment="Right" Foreground="#ff6600"></TextBlock>
+                </StackPanel>
+
+                <StackPanel x:Name="prize11" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="center">
+                    <TextBlock Width="30" FontWeight="SemiBold" FontSize="25" Text="12" TextAlignment="Center" Foreground="#ff6600"></TextBlock>
+                    <Grid Width="40">
+                        <Rectangle Visibility="hidden" x:Name="WPF_shape12" Fill="#fff" HorizontalAlignment="Center" VerticalAlignment="Center" Height="7" Width="7" RenderTransformOrigin="0.5,0.5">
+                            <Rectangle.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="45"/>
+                                </TransformGroup>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                    </Grid>
+                    <TextBlock Width="160" FontSize="25" FontWeight="SemiBold" Text="1 250 000 Kč"  TextAlignment="Right" Foreground="#ff6600"></TextBlock>
+                </StackPanel>
+
+                <StackPanel x:Name="prize10" Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="center">
+                    <TextBlock Width="30" FontWeight="SemiBold" FontSize="25" Text="11" TextAlignment="Center" Foreground="#ff6600"></TextBlock>
+                    <Grid Width="40">
+                        <Rectangle Visibility="hidden" x:Name="WPF_shape11" Fill="#fff" HorizontalAlignment="Center" VerticalAlignment="Center" Height="7" Width="7" RenderTransformOrigin="0.5,0.5">
+                            <Rectangle.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="45"/>
+                                </TransformGroup>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                    </Grid>
+                    <TextBlock Width="160" FontSize="25" FontWeight="SemiBold" Text="640 000 Kč"  TextAlignment="Right" Foreground="#ff6600"></TextBlock>
+                </StackPanel>
+
+                <StackPanel x:Name="prize9" Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="center">
+                    <TextBlock Width="30" FontWeight="SemiBold" FontSize="25" Text="10" TextAlignment="Center" Foreground="#fff"></TextBlock>
+                    <Grid Width="40">
+                        <Rectangle Visibility="hidden" x:Name="WPF_shape10" Fill="#fff" HorizontalAlignment="Center" VerticalAlignment="Center" Height="7" Width="7" RenderTransformOrigin="0.5,0.5">
+                            <Rectangle.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="45"/>
+                                </TransformGroup>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                    </Grid>
+                    <TextBlock Width="160" FontSize="25" FontWeight="SemiBold" Text="320 000 Kč"  TextAlignment="Right" Foreground="#fff"></TextBlock>
+                </StackPanel>
+
+                <StackPanel x:Name="prize8" Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="center">
+                    <TextBlock Width="30" FontWeight="SemiBold" FontSize="25" Text="9" TextAlignment="Center" Foreground="#ff6600"></TextBlock>
+                    <Grid Width="40">
+                        <Rectangle Visibility="hidden" x:Name="WPF_shape9" Fill="#fff" HorizontalAlignment="Center" VerticalAlignment="Center" Height="7" Width="7" RenderTransformOrigin="0.5,0.5">
+                            <Rectangle.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="45"/>
+                                </TransformGroup>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                    </Grid>
+                    <TextBlock Width="160" FontSize="25" FontWeight="SemiBold" Text="160 000 Kč"  TextAlignment="Right" Foreground="#ff6600"></TextBlock>
+                </StackPanel>
+
+                <StackPanel x:Name="prize7" Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="center">
+                    <TextBlock Width="30" FontWeight="SemiBold" FontSize="25" Text="8" TextAlignment="Center" Foreground="#ff6600"></TextBlock>
+                    <Grid Width="40">
+                        <Rectangle Visibility="hidden" x:Name="WPF_shape8" Fill="#fff" HorizontalAlignment="Center" VerticalAlignment="Center" Height="7" Width="7" RenderTransformOrigin="0.5,0.5">
+                            <Rectangle.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="45"/>
+                                </TransformGroup>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                    </Grid>
+                    <TextBlock Width="160" FontSize="25" FontWeight="SemiBold" Text="80 000 Kč"  TextAlignment="Right" Foreground="#ff6600"></TextBlock>
+                </StackPanel>
+
+                <StackPanel x:Name="prize6" Grid.Row="8" Orientation="Horizontal" HorizontalAlignment="center">
+                    <TextBlock Width="30" FontWeight="SemiBold" FontSize="25" Text="7" TextAlignment="Center" Foreground="#ff6600"></TextBlock>
+                    <Grid Width="40">
+                        <Rectangle Visibility="hidden" x:Name="WPF_shape7" Fill="#fff" HorizontalAlignment="Center" VerticalAlignment="Center" Height="7" Width="7" RenderTransformOrigin="0.5,0.5">
+                            <Rectangle.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="45"/>
+                                </TransformGroup>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                    </Grid>
+                    <TextBlock Width="160" FontSize="25" FontWeight="SemiBold" Text="40 000 Kč"  TextAlignment="Right" Foreground="#ff6600"></TextBlock>
+                </StackPanel>
+
+                <StackPanel x:Name="prize5" Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="center">
+                    <TextBlock Width="30" FontWeight="SemiBold" FontSize="25" Text="6" TextAlignment="Center" Foreground="#ff6600"></TextBlock>
+                    <Grid Width="40">
+                        <Rectangle Visibility="hidden" x:Name="WPF_shape6" Fill="#fff" HorizontalAlignment="Center" VerticalAlignment="Center" Height="7" Width="7" RenderTransformOrigin="0.5,0.5">
+                            <Rectangle.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="45"/>
+                                </TransformGroup>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                    </Grid>
+                    <TextBlock Width="160" FontSize="25" FontWeight="SemiBold" Text="20 000 Kč"  TextAlignment="Right" Foreground="#ff6600"></TextBlock>
+                </StackPanel>
+
+                <StackPanel x:Name="prize4" Grid.Row="10" Orientation="Horizontal" HorizontalAlignment="center">
+                    <TextBlock Width="30" FontWeight="SemiBold" FontSize="25" Text="5" TextAlignment="Center" Foreground="#fff"></TextBlock>
+                    <Grid Width="40">
+                        <Rectangle Visibility="hidden" x:Name="WPF_shape5" Fill="#fff" HorizontalAlignment="Center" VerticalAlignment="Center" Height="7" Width="7" RenderTransformOrigin="0.5,0.5">
+                            <Rectangle.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="45"/>
+                                </TransformGroup>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                    </Grid>
+                    <TextBlock Width="160" FontSize="25" FontWeight="SemiBold" Text="10 000 Kč"  TextAlignment="Right" Foreground="#fff"></TextBlock>
+                </StackPanel>
+
+                <StackPanel x:Name="prize3" Grid.Row="11" Orientation="Horizontal" HorizontalAlignment="center">
+                    <TextBlock Width="30" FontWeight="SemiBold" FontSize="25" Text="4" TextAlignment="Center" Foreground="#ff6600"></TextBlock>
+                    <Grid Width="40">
+                        <Rectangle Visibility="hidden" x:Name="WPF_shape4" Fill="#fff" HorizontalAlignment="Center" VerticalAlignment="Center" Height="7" Width="7" RenderTransformOrigin="0.5,0.5">
+                            <Rectangle.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="45"/>
+                                </TransformGroup>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                    </Grid>
+                    <TextBlock Width="160" FontSize="25" FontWeight="SemiBold" Text="5 000 Kč"  TextAlignment="Right" Foreground="#ff6600"></TextBlock>
+                </StackPanel>
+
+                <StackPanel x:Name="prize2" Grid.Row="12" Orientation="Horizontal" HorizontalAlignment="center">
+                    <TextBlock Width="30" FontWeight="SemiBold" FontSize="25" Text="3" TextAlignment="Center" Foreground="#ff6600"></TextBlock>
+                    <Grid Width="40">
+                        <Rectangle Visibility="hidden" x:Name="WPF_shape3" Fill="#fff" HorizontalAlignment="Center" VerticalAlignment="Center" Height="7" Width="7" RenderTransformOrigin="0.5,0.5">
+                            <Rectangle.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="45"/>
+                                </TransformGroup>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                    </Grid>
+                    <TextBlock Width="160" FontSize="25" FontWeight="SemiBold" Text="3 000 Kč"  TextAlignment="Right" Foreground="#ff6600"></TextBlock>
+                </StackPanel>
+
+                <StackPanel x:Name="prize1" Grid.Row="13" Orientation="Horizontal" HorizontalAlignment="center">
+                    <TextBlock Width="30" FontWeight="SemiBold" FontSize="25" Text="2" TextAlignment="Center" Foreground="#ff6600"></TextBlock>
+                    <Grid Width="40">
+                        <Rectangle Visibility="hidden" x:Name="WPF_shape2" Fill="#fff" HorizontalAlignment="Center" VerticalAlignment="Center" Height="7" Width="7" RenderTransformOrigin="0.5,0.5">
+                            <Rectangle.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="45"/>
+                                </TransformGroup>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                    </Grid>
+                    <TextBlock Width="160" FontSize="25" FontWeight="SemiBold" Text="2 000 Kč"  TextAlignment="Right" Foreground="#ff6600"></TextBlock>
+                </StackPanel>
+
+                <StackPanel Grid.Row="14" Orientation="Horizontal" HorizontalAlignment="center">
+                    <TextBlock Width="30" FontWeight="SemiBold" FontSize="25" Text="1" TextAlignment="Center" Foreground="#ff6600"></TextBlock>
+                    <Grid Width="40">
+                        <Rectangle Visibility="hidden" x:Name="WPF_shape1" Fill="#fff" HorizontalAlignment="Center" VerticalAlignment="Center" Height="7" Width="7" RenderTransformOrigin="0.5,0.5">
+                            <Rectangle.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="45"/>
+                                </TransformGroup>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                    </Grid>
+                    <TextBlock Width="160" FontSize="25" FontWeight="SemiBold" Text="1 000 Kč"  TextAlignment="Right" Foreground="#ff6600"></TextBlock>
+                </StackPanel>
+            </Grid>
+
+
+            <Button Click="AbortClick" Cursor="Hand" Background="Transparent" Width="202" Height="42" FontSize="25" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0">
+                <Grid Height="40" Width="200">
+                    <Border Background="black" CornerRadius="15,15,15,15"></Border>
+                    <TextBlock VerticalAlignment="center" Text="vzdát hru" Foreground="white" TextAlignment="Center" FontSize="20"></TextBlock>
+                </Grid>
+            </Button>
+
+        </Grid>
+
+
+    </Grid>
+</Page>

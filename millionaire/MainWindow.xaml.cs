@@ -23,6 +23,8 @@ namespace millionaire
         public MainWindow()
         {
             InitializeComponent();
+
+            mainFrame.Navigate(new pages.Menu(mainFrame));
         }
     }
 }
