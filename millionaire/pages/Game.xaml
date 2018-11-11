@@ -131,14 +131,11 @@
             </Grid.RowDefinitions>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button Cursor="Hand" Width="52" Height="52" BorderThickness="0" Background="Transparent">
-                    <Ellipse Width="50" Height="50" Fill="black"></Ellipse>
-                </Button>
-                <Button Cursor="Hand" Width="52" Height="52" BorderThickness="0" Background="Transparent" Margin="20,0,20,0">
-                    <Ellipse Width="50" Height="50" Fill="black"></Ellipse>
-                </Button>
-                <Button Cursor="Hand" Width="52" Height="52" BorderThickness="0" Background="Transparent">
-                    <Ellipse Width="50" Height="50" Fill="black"></Ellipse>
+                <Button Cursor="Hand" Width="52" Height="52" BorderThickness="0" Background="Transparent" Click="UseHintTwo">
+                    <Grid>
+                        <Ellipse Width="50" Height="50" Fill="black" VerticalAlignment="Top"></Ellipse>
+                        <TextBlock Foreground="#ffffff" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="17">50:50</TextBlock>
+                    </Grid>
                 </Button>
             </StackPanel>
 

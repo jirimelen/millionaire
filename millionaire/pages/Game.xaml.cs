@@ -57,11 +57,10 @@ namespace millionaire.pages
             };
 
             shapes[statusPanel.IndicatorPosition].Visibility = Visibility.Visible;
-            Update_data();
             // if save found, Load
             if (Continue)
             {
-                gameManager = new props.GameManager(Continue);
+                gameManager = new props.GameManager(true);
                 for (int i = 0; i < 14 - gameManager.GetIndicatorPosition(); i++)
                 {
                     statusPanel.IndicatorPosition--;
@@ -81,15 +80,21 @@ namespace millionaire.pages
                 WPF_question.Text = question.Content;
                 Grid.SetRow(WPF_actualIndicator, statusPanel.IndicatorPosition);
             }
+            else
+            {
+                Update_data();
+            }
         }
-
         private props.GameManager gameManager = new props.GameManager();
         private props.StatusPanel statusPanel = new props.StatusPanel();
+
+        private props.hints.HintTwo hintTwo = new props.hints.HintTwo();
 
         private List<TextBlock> answers = new List<TextBlock>();
         private List<Rectangle> shapes = new List<Rectangle>();
 
         private Random random = new Random();
+        int trueAnsNum;
         
         private void Answer_button_click(object sender, RoutedEventArgs e)
         {
@@ -127,12 +132,12 @@ namespace millionaire.pages
             // get next question / level up
             props.Question question = await gameManager.GetQusetion();
 
-            int trueAnswNum = random.Next(0,4);
+            trueAnsNum = random.Next(0,4);
             // assign text to buttons + question
             int FakeAnsIteration = 0;
             for (int i = 0; i < 4; i++)
             {
-                if (i == trueAnswNum) answers[i].Text = question.Answer;
+                if (i == trueAnsNum) answers[i].Text = question.Answer;
                 else answers[i].Text = question.FakeAnswers[FakeAnsIteration++];
             }
 
@@ -144,6 +149,19 @@ namespace millionaire.pages
         {
             gameManager.AbortGame();
             frame.Navigate(new pages.Scoreboard(frame, true));
+        }
+
+        public void UseHintTwo(object sender, RoutedEventArgs e)
+        {
+            Button Sender = sender as Button;
+            hintTwo.getSecondAnsNum(trueAnsNum);
+            List<TextBlock> tempAnswers = answers.GetRange(0, answers.Count);
+            tempAnswers.Remove(answers[trueAnsNum]);
+            tempAnswers.Remove(answers[hintTwo.getSecondAnsNum(trueAnsNum)]);
+
+            tempAnswers[0].Text = "Not the answer.";
+            tempAnswers[1].Text = "Not the answer.";
+            Sender.IsEnabled = false;
         }
 
 

@@ -114,7 +114,7 @@ namespace millionaire.props
             Progress data = new Progress();
 
             // in case of clearing progress file (manually)
-            //SaveProgressData(data);
+            // SaveProgressData(data);
 
             string jsonString = File.ReadAllText(@"D:\school\millionaire\millionaire\progress.json");
             data = JsonConvert.DeserializeObject<Progress>(jsonString, JsonSettings);
@@ -126,7 +126,7 @@ namespace millionaire.props
         {
             string jsonString = JsonConvert.SerializeObject(data, JsonSettings);
             File.WriteAllText(@"D:\school\millionaire\millionaire\progress.json", jsonString);
-        }
+        } 
 
 
         public List<Score> GetScoresData()

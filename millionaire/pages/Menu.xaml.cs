@@ -52,7 +52,7 @@ namespace millionaire.pages
         }
         public void Exit(object sender, RoutedEventArgs e)
         {
-
+            System.Windows.Application.Current.Shutdown();
         }
 
     }

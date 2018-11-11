@@ -136,7 +136,7 @@ namespace millionaire.props
             List<Score> scores = fileManager.GetScoresData();
 
             scores.Add(new Score() {
-                Name = "Player 1"/*to be fillable by user input*/,
+                Name = "Player 2"/*to be fillable by user input*/,
                 Prize = actualLevel != 0 ? (actualLevel != 13 ? prizes[actualLevel - 1] :  prizes[14]) : "0 Kč",
                 Date = string.Format("{0:dd.MM.yyyy HH:mm}", DateTime.Now)
             });
